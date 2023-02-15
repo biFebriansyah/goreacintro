@@ -36,7 +36,7 @@ yarn start
 ## 💻 Built with
 
 -   [Nodejs](https://nodejs.org/en/): JavaScript runtime
--   [Reactjs](https://reactjs.org/): JavaScript framework
+-   [Reactjs](https://reactjs.org/): JavaScript library
 -   [Bootstrap](https://react-bootstrap.github.io/): CSS framework
 
 <hr>
