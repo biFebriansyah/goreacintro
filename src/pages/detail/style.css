@@ -1,0 +1,12 @@
+.containerrs {
+    width: 60%;
+    padding: 0;
+    margin: 50px auto;
+}
+
+.contentts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid gray; */
+}

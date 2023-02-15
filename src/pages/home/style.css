@@ -1,0 +1,25 @@
+main {
+    width: 80%;
+    margin: 0 auto;
+    height: 100vh;
+    margin-top: 20px;
+}
+
+.prod {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.config {
+    padding: 20px;
+    margin-top: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filterPrice {
+    padding: 5px;
+    font-size: 11pt;
+}
