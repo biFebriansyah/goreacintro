@@ -36,8 +36,8 @@ yarn start
 ## 💻 Built with
 
 -   [Nodejs](https://nodejs.org/en/): JavaScript runtime
--   [Expressjs](https://expressjs.com/): JavaScript framework
--   [Postgres](https://www.postgresql.org/): for DBMS
+-   [Reactjs](https://reactjs.org/): JavaScript framework
+-   [Bootstrap](https://react-bootstrap.github.io/): CSS framework
 
 <hr>
 <p align="center">
