@@ -16,7 +16,7 @@
 1. Clone the repository
 
 ```bash
-git clone https://github.com/biFebriansyah/nodeback.git
+git clone https://github.com/biFebriansyah/goreacintro.git
 ```
 
 2. Install dependencies
