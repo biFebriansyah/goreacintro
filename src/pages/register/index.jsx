@@ -1,16 +1,18 @@
 import style from './signup.module.css'
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useApi from '../../helpers/useApi'
 import Header from '../../components/header'
 
 function Signup() {
     const [PlaceHolder, setPlaceHolder] = useState({ Username: 'Username', Password: 'Password' })
-    const [Users, setUsers] = useState({ username: 'username', password: 'password' })
+    const [Users, setUsers] = useState({ username: 'username', password: 'password', role: 'users' })
 
     const refLogin = useRef(null)
     const refWarUser = useRef(null)
     const refWarPass = useRef(null)
 
+    const api = useApi()
     const navigate = useNavigate()
 
     const onChangeInput = (event) => {
@@ -41,7 +43,17 @@ function Signup() {
     }
 
     const daftar = () => {
-        navigate('/login')
+        api.requests({
+            method: 'POST',
+            url: '/users',
+            data: Users
+        })
+            .then((res) => {
+                navigate('/login')
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     return (

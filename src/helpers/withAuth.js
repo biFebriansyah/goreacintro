@@ -2,15 +2,15 @@ import { Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const withAuth = (Component) => {
-   return (props) => {
-      const { isAuth } = useSelector((state) => state.users)
+    return (props) => {
+        const { isAuth } = useSelector((state) => state.users)
 
-      if (!isAuth) {
-         return <Navigate to="/404" />
-      }
+        if (!isAuth) {
+            return <Navigate to="/login" />
+        }
 
-      return <Component {...props} />
-   }
+        return <Component {...props} />
+    }
 }
 
 export default withAuth

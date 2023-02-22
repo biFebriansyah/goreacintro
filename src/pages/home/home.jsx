@@ -1,20 +1,46 @@
 import './style.scoped.css'
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { SetData } from '../../store/reducer/users'
+import useApi from '../../helpers/useApi'
 import Cards from '../../components/cards/card'
 import Navbar from '../../components/header/index'
 
 function Home() {
+    const { isAuth } = useSelector((state) => state.users)
+    const dispatch = useDispatch()
+    const api = useApi()
     const [products, setProd] = useState([])
 
     const getData = async () => {
         try {
-            const { data } = await axios.get('http://hplussport.com/api/products/order/price')
-            setProd(data)
+            const { data } = await api.requests({
+                method: 'GET',
+                url: '/products'
+            })
+            setProd(data.data)
         } catch (error) {
             console.log(error)
         }
     }
+
+    const getUser = async () => {
+        try {
+            const { data } = await api.requests({
+                method: 'GET',
+                url: '/users'
+            })
+            dispatch(SetData(data.data))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        if (isAuth) {
+            getUser()
+        }
+    }, [isAuth])
 
     useEffect(() => {
         getData()

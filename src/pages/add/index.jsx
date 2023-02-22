@@ -1,6 +1,7 @@
 import style from './style.module.css'
 import React, { useState, useRef } from 'react'
 import Header from '../../components/header'
+import withAuth from '../../helpers/withAuth'
 import axios from 'axios'
 
 function Add() {
@@ -110,4 +111,4 @@ function Add() {
     )
 }
 
-export default Add
+export default withAuth(Add)

@@ -1,6 +1,7 @@
 import './style.scoped.scss'
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FaSignOutAlt, FaShoppingBag } from 'react-icons/fa'
 
 const Carts = (props) => {
@@ -20,7 +21,7 @@ const Carts = (props) => {
                     </button>
                 </div>
                 <button className="btn btn-sm btn-outline-secondary">
-                    <FaSignOutAlt />
+                    {props.username} <FaSignOutAlt />
                 </button>
             </div>
         </nav>
@@ -28,8 +29,15 @@ const Carts = (props) => {
 }
 
 function Headers(props) {
+    const navigate = useNavigate()
     const { pathname } = useLocation()
-    const isAuth = true
+    const { isAuth, data } = useSelector((state) => state.users)
+    const username = data.username || 'default'
+
+    const admin = () => {
+        navigate('/add')
+    }
+    // const isAuth = false
 
     return (
         <header className={`my_header bg-white-only`}>
@@ -53,7 +61,7 @@ function Headers(props) {
                         </div>
                     </>
                 ) : isAuth && pathname === '/' ? (
-                    <Carts show={props.show} qty={props.qty} total={props.total} />
+                    <Carts username={username} show={admin} qty={props.qty} total={props.total} />
                 ) : (
                     <div className="my_btn">
                         <Link to="/" className="cos_btn bg_false">

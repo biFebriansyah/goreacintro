@@ -1,6 +1,9 @@
 import style from './style.module.css'
 import React, { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { login } from '../../store/reducer/users'
+import useApi from '../../helpers/useApi'
 import Header from '../../components/header'
 
 function Login() {
@@ -11,13 +14,16 @@ function Login() {
     const refWarUser = useRef(null)
     const refWarPass = useRef(null)
 
+    const { isAuth } = useSelector((state) => state.users)
+    const dispatch = useDispatch()
+    const api = useApi()
     const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     if (isAuth) {
-    //         navigate('/')
-    //     }
-    // }, [isAuth])
+    useEffect(() => {
+        if (isAuth) {
+            navigate('/')
+        }
+    }, [isAuth])
 
     const onChangeInput = (event) => {
         event.preventDefault()
@@ -47,7 +53,18 @@ function Login() {
     }
 
     const goLogin = () => {
-        navigate('/')
+        api.requests({
+            method: 'POST',
+            url: '/auth',
+            data: Users
+        })
+            .then((res) => {
+                const { data } = res.data
+                dispatch(login(data.token))
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     return (

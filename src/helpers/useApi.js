@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux'
 import axios from 'axios'
 
 function useApi(urls = '') {
-    // const { token } = useSelector((state) => state.users)
-    const token = ''
+    const { token } = useSelector((state) => state.users)
+    // const token = ''
 
     const [requests, setRequests] = useState({
         baseURL: process.env.REACT_APP_BASEURL || urls,
