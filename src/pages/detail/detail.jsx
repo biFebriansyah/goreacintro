@@ -1,9 +1,9 @@
-import './style.css'
+import './style.scoped.css'
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Image, Button } from 'react-bootstrap'
-import Navbar from '../../components/navbar/navbar'
+import Navbar from '../../components/header'
 
 function Detail() {
     const [data, setData] = useState({})

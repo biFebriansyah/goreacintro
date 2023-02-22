@@ -1,8 +1,8 @@
-import './style.css'
+import './style.scoped.css'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Cards from '../../components/cards/card'
-import Navbar from '../../components/navbar/navbar'
+import Navbar from '../../components/header/index'
 
 function Home() {
     const [products, setProd] = useState([])
@@ -21,7 +21,7 @@ function Home() {
     }, [])
 
     return (
-        <div className="container">
+        <div className="containers">
             <Navbar />
             <main>
                 <section className="config">
